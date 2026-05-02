@@ -2,10 +2,12 @@
 2.WASD键单轴输入默认填充到X轴，所以WS想要对应Y轴，必须用Swizzle 
 
 2.8:
+一、
 将编辑器中的增强输入资产和玩家控制器关联起来
 bReplicates=true;解释：
 就是响应服务器上的数据更新，再将更新发送给客户端。
 
+二、
 1.编辑器权限：
 EditAnywhere：
     关卡中选中实例后的细节面板和蓝图的细节面板都能改。
@@ -31,3 +33,21 @@ BlueprintReadOnly:
 BlueprintReadWrite:
       蓝图可读可写。
 
+三、
+EnhancedInput模块提供的头文件：
+#include "EnhancedInputComponent.h"
+#include "EnhancedInputSubsystems.h"
+#include "InputMappingContext.h"
+#include "InputAction.h"
+
+提供的指针类型：
+UEnhancedInputComponent*
+UEnhancedInputLocalPlayerSubsystem*
+UInputMappingContext*
+UInputAction*
+
+四、
+check();语句是条件不满足时停止执行
+
+五、
+子系统是单例模式，在程序运行的时候只存在一个
