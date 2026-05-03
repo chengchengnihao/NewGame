@@ -2,3 +2,7 @@
 UEnhancedInputLocalPlayerSubsystem*Subsystem不用TObjectPtr<>的原因：TObjectPtr<>是用来防止悬空指针的，追踪被GC销毁的对象的，但是子系统不会被UE GC销毁。
 二、
 CastChecked是用来直接实现转换和检查的工具函数，如果转换失败直接奔溃。
+三、
+Pitch (俯仰)点头、Yaw(偏航) 摇头、Roll(滚转) 歪头
+四、
+GetPawn()是一个需要指定类型的模板函数

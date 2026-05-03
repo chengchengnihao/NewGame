@@ -10,6 +10,8 @@
  * 
  */
 class UInputMappingContext;
+class UInputAction;
+struct  FInputActionValue;
 UCLASS()
 class BOY1_API AAuraPlayerController : public APlayerController
 {
@@ -18,8 +20,14 @@ public:
 	AAuraPlayerController();
 protected:
 virtual void BeginPlay() override;
+	virtual void SetupInputComponent() override;
 private:
 	UPROPERTY(EditAnywhere,Category="Input")
-	TObjectPtr<UInputMappingContext>AuraContext;
-
+	TObjectPtr<UInputMappingContext>AuraContext;//声明输入映射上下文
+	
+	UPROPERTY(EditAnywhere,Category="Input")
+	TObjectPtr<UInputAction>MoveAction;//声明移动动作
+	
+	void Move(const FInputActionValue& InputActionValue);
+    
 };
