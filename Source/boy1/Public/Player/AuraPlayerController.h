@@ -26,8 +26,8 @@ private:
 	TObjectPtr<UInputMappingContext>AuraContext;//声明输入映射上下文
 	
 	UPROPERTY(EditAnywhere,Category="Input")
-	TObjectPtr<UInputAction>MoveAction;//声明移动动作
+	TObjectPtr<UInputAction>MoveAction;//声明IA移动动作
 	
-	void Move(const FInputActionValue& InputActionValue);
+	void Move(const FInputActionValue& InputActionValue);//声明移动回调函数
     
 };

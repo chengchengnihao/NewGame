@@ -13,5 +13,8 @@ UCLASS()
 class BOY1_API AAuraCharacter : public AAuraCharacterBase
 {
 	GENERATED_BODY()
+public:
+	AAuraCharacter();
+protected:
 	
 };

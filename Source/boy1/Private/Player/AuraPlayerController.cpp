@@ -30,23 +30,23 @@ void AAuraPlayerController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
 	UEnhancedInputComponent*EnhancedInputComponent=CastChecked<UEnhancedInputComponent>(InputComponent);
-	EnhancedInputComponent->BindAction(MoveAction,ETriggerEvent::Triggered,this,&AAuraPlayerController::Move);
+	EnhancedInputComponent->BindAction(MoveAction,ETriggerEvent::Triggered,this,&AAuraPlayerController::Move);//绑定IA和移动回调函数
 	
 
 }
 
 void AAuraPlayerController::Move(const FInputActionValue& InputActionValue)
 {
-	const FVector2D InputAxisVector=InputActionValue.Get<FVector2D>();
-	const FRotator Rotator=InputActionValue.Get<FRotator>();
+	const FVector2D InputAxisVector=InputActionValue.Get<FVector2D>();//获取IA坐标值
+	const FRotator Rotator=GetControlRotation();//获取旋转器
 	const FRotator YawRotator(0.f,Rotator.Yaw,0.f);
 	
-	const FVector ForwardDirection=FRotationMatrix(YawRotator).GetUnitAxis(EAxis::X);
+	const FVector ForwardDirection=FRotationMatrix(YawRotator).GetUnitAxis(EAxis::X);//获取世界向量
 	const FVector RightDirection=FRotationMatrix(YawRotator).GetUnitAxis(EAxis::Y);
 	
 	if (APawn*ControlledPawn=Cast<APawn>(GetPawn()))
 	{ 
-		ControlledPawn->AddMovementInput(ForwardDirection,InputAxisVector.Y);
+		ControlledPawn->AddMovementInput(ForwardDirection,InputAxisVector.Y);//设置角色世界的移动方向
 		ControlledPawn->AddMovementInput(RightDirection,InputAxisVector.X);
 		
 	}
