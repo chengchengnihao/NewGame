@@ -15,7 +15,7 @@ class BOY1_API AAuraEnemy : public AAuraCharacterBase,public IEnemyInterface
 {
 	GENERATED_BODY()
 public:
-	virtual void HighlightActor() override;
+	virtual void HighlightActor() override;//重写纯虚拟函数
 	virtual void UnHighlightActor() override;
 	
 };
