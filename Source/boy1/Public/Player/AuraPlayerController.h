@@ -12,12 +12,15 @@
 class UInputMappingContext;
 class UInputAction;
 struct  FInputActionValue;
+class IEnemyInterface;
 UCLASS()
 class BOY1_API AAuraPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 public:
 	AAuraPlayerController();
+    virtual void PlayerTick(float DeltaTime) override;
+	
 protected:
 virtual void BeginPlay() override;
 	virtual void SetupInputComponent() override;
@@ -29,5 +32,8 @@ private:
 	TObjectPtr<UInputAction>MoveAction;//声明IA移动动作
 	
 	void Move(const FInputActionValue& InputActionValue);//声明移动回调函数
-    
+    void CursorTrace();
+	
+	IEnemyInterface*LastActor;
+	IEnemyInterface*ThisActor;
 };

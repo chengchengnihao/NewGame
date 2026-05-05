@@ -25,4 +25,6 @@ class BOY1_API IEnemyInterface   //实现功能，可以写纯虚拟函数
 public:
 	virtual void HighlightActor()=0;//创建纯虚拟函数
 	virtual void UnHighlightActor()=0;
+	
+	
 };

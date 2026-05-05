@@ -18,4 +18,6 @@ public:
 	virtual void HighlightActor() override;//重写纯虚拟函数
 	virtual void UnHighlightActor() override;
 	
+	UPROPERTY(BlueprintReadOnly)
+	bool bHighlighted=false;
 };
