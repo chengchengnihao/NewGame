@@ -15,9 +15,10 @@ class BOY1_API AAuraEnemy : public AAuraCharacterBase,public IEnemyInterface
 {
 	GENERATED_BODY()
 public:
+	AAuraEnemy();
 	virtual void HighlightActor() override;//重写纯虚拟函数
 	virtual void UnHighlightActor() override;
 	
-	UPROPERTY(BlueprintReadOnly)
-	bool bHighlighted=false;
+	//UPROPERTY(BlueprintReadOnly)
+	//bool bHighlighted=false;
 };
