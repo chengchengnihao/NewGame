@@ -22,7 +22,7 @@ void AAuraEnemy::HighlightActor()
 	
 	/*定义AbilitySystemComponent和AttributeSet*/
 	AbilitySystemComponent=CreateDefaultSubobject<UAuraAbilitySystemComponent>("AbilitySystemComponent");//alt+enter自动添加头文件
-	AbilitySystemComponent->SetIsReplicated(true); //不知道为什么AttributeSet不需要被复制
+	AbilitySystemComponent->SetIsReplicated(true); //不知道为什么AttributeSet不需要被复制,因为AttributeSet依靠ASC复制
 	
 	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Minimal); //AI控制角色用最小复制模式
 	
@@ -35,4 +35,10 @@ void AAuraEnemy::UnHighlightActor()
 	GetMesh()->SetRenderCustomDepth(false);
 	Weapon->SetRenderCustomDepth(false);
 
+}
+
+void AAuraEnemy::BeginPlay()
+{
+	Super::BeginPlay();
+	AbilitySystemComponent->InitAbilityActorInfo(this,this); //定义能力演员信息
 }

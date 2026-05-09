@@ -15,6 +15,8 @@ class BOY1_API AAuraCharacter : public AAuraCharacterBase
 	GENERATED_BODY()
 public:
 	AAuraCharacter();
-protected:
-	
+	virtual void PossessedBy(AController* NewController) override; //在声明里头它们是在public里头的
+	virtual void OnRep_PlayerState() override;
+private:
+	void InitAbilityActorInfo();
 };
