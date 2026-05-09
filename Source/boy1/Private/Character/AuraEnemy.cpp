@@ -24,6 +24,8 @@ void AAuraEnemy::HighlightActor()
 	AbilitySystemComponent=CreateDefaultSubobject<UAuraAbilitySystemComponent>("AbilitySystemComponent");//alt+enter自动添加头文件
 	AbilitySystemComponent->SetIsReplicated(true); //不知道为什么AttributeSet不需要被复制
 	
+	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Minimal); //AI控制角色用最小复制模式
+	
 	AttributeSet=CreateDefaultSubobject<UAttributeSet>("AttributeSet");
 }
 
