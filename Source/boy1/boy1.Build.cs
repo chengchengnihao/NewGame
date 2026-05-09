@@ -8,9 +8,9 @@ public class boy1 : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput","GamePlayAbilities" });
 
-		PrivateDependencyModuleNames.AddRange(new string[] { "GamePlayAbilities","GameplayTags","GameplayTasks" });
+		PrivateDependencyModuleNames.AddRange(new string[] { "GameplayTags","GameplayTasks" });
 
 		// Uncomment if you are using Slate UI
 		// PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
