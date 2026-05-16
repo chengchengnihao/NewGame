@@ -10,6 +10,14 @@
 AAuraEnemy::AAuraEnemy()
 {
 	GetMesh()->SetCollisionResponseToChannel(ECC_Visibility,ECR_Block);
+	
+	/*定义AbilitySystemComponent和AttributeSet*/
+	AbilitySystemComponent=CreateDefaultSubobject<UAuraAbilitySystemComponent>("AbilitySystemComponent");//alt+enter自动添加头文件
+	AbilitySystemComponent->SetIsReplicated(true); //不知道为什么AttributeSet不需要被复制,因为AttributeSet依靠ASC复制
+	
+	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Minimal); //AI控制角色用最小复制模式
+	
+	AttributeSet=CreateDefaultSubobject<UAuraAttributeSet>("AttributeSet");
 }
 
 void AAuraEnemy::HighlightActor()
@@ -20,13 +28,7 @@ void AAuraEnemy::HighlightActor()
 	Weapon->SetRenderCustomDepth(true);
 	Weapon->SetCustomDepthStencilValue(CUSTOM_DEPTH_RED);
 	
-	/*定义AbilitySystemComponent和AttributeSet*/
-	AbilitySystemComponent=CreateDefaultSubobject<UAuraAbilitySystemComponent>("AbilitySystemComponent");//alt+enter自动添加头文件
-	AbilitySystemComponent->SetIsReplicated(true); //不知道为什么AttributeSet不需要被复制,因为AttributeSet依靠ASC复制
 	
-	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Minimal); //AI控制角色用最小复制模式
-	
-	AttributeSet=CreateDefaultSubobject<UAttributeSet>("AttributeSet");
 }
 
 void AAuraEnemy::UnHighlightActor()

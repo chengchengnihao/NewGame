@@ -38,7 +38,7 @@ void AAuraCharacter::InitAbilityActorInfo()
 {
 	AAuraPlayerState* AuraPlayerState=GetPlayerState<AAuraPlayerState>(); //这个模板函数可以传入PlayerState类型来获取相应的返回类型
 	check(AuraPlayerState);
-	AbilitySystemComponent->InitAbilityActorInfo(AuraPlayerState,this);
 	AbilitySystemComponent=AuraPlayerState->GetAbilitySystemComponent();
+	AbilitySystemComponent->InitAbilityActorInfo(AuraPlayerState,this);
 	AttributeSet=AuraPlayerState->GetAttributes();
 }
