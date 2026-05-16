@@ -16,8 +16,11 @@ class BOY1_API AAuraEffectActor : public AActor
 public:	
 
 	AAuraEffectActor();
-
-
+	
+	UFUNCTION()
+    virtual void OnOverlay(UPrimitiveComponent*OverlappedComponent,AActor*OtherActor,UPrimitiveComponent*OtherComp,int32 OtherBodyIndex,bool bFromSweep,const FHitResult& SweetResult);
+   UFUNCTION()
+	virtual void EndOverlay(UPrimitiveComponent*OverlappedComponent, AActor*OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 protected:
 
 	virtual void BeginPlay() override;
