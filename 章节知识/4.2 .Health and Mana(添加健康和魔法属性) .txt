@@ -1,0 +1,24 @@
+一、过程：
+添加新属性的步骤（属性的模板步骤）：
+1、声明属性变量:
+      类型是FGameplayAttributeData
+      声明用FGameplayAttributeData Health(举例)
+      设置(BlueprintReadOnly,ReplicatedUsing=OnRep_Health,Category="Vital Attributes")
+
+2、创建回调函数：OnRep_Health(举例)
+   接收const FGameplayAttributeData& OldHealth参数
+   定义内容：
+GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet,Health,OldHealth);
+         //作用是告诉能力系统这个属性的变化
+	//记住旧值，可以在之后回滚的时候用到，还没有定义回滚函数
+
+3、游戏属性的更新通知宏(同步注册属性变量，复制)：
+virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>&OutLifetimeProps)const override;
+
+二、知识点
+
+1、模板就是设置和运行某物所需的步骤。
+
+2、在属性集中使用属性时，是模板操作，在所有GAS项目中都会用到，此为属性的模板步骤。
+
+
