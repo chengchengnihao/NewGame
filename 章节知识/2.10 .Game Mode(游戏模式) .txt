@@ -1,0 +1,17 @@
+创建游戏模式：
+设置默认Pawn类和默认游戏控制器
+
+给人物设置弹簧臂和摄像机和移动参数和动作：
+蓝图里：设置弹簧臂的 使用pawn控制旋转 为无
+             设置摄像机旋转延迟
+              设置摄像机的 使用pawn控制旋转 为无
+在AuraCharacter代码中设置构造函数
+构造函数内容如下：
+	GetCharacterMovement()->bOrientRotationToMovement=true;
+	GetCharacterMovement()->bConstrainToPlane=true;
+	GetCharacterMovement()->bSnapToPlaneAtStart=true;
+	GetCharacterMovement()->RotationRate=FRotator(0.f,400.f,0.f);
+	
+	bUseControllerRotationPitch=false;
+	bUseControllerRotationYaw=false;
+	bUseControllerRotationRoll=false;

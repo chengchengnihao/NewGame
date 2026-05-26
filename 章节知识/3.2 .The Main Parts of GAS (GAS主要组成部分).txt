@@ -1,0 +1,10 @@
+GAS主要部分：
+1.Ability System Component
+2.Attribute Set
+3.核心一：Gameplay Ability->运行Ability Task(异步任务):相当于干活的工人
+4.Gameplay Effect
+5.Gameplay Cue
+6.核心二：Gameplay Tag
+可以将游戏能力系统组件挂在玩家状态上，然后挂在敌人类上，然后用AI功能
+
+如果pawn类被销毁，可以使得一个新的pawn类挂在玩家状态上。

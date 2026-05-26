@@ -1,0 +1,9 @@
+复制模式：
+
+AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Minimal);
+
+mixed：游戏玩家控制的类用，游戏效果仅会被自己的代理(owing client)复制，Gameplay Cues和Gameplay Tags会被复制到所有的代理。
+
+minimal：AI控制类用（敌人），游戏效果不会被复制，只有Gameplay Cues和Gameplay Tags会被复制到所有的代理。
+
+full：游戏效果全都会被复制

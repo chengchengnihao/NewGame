@@ -1,0 +1,12 @@
+给敌人高亮，最后加了一个调试球测试是否可以被鼠标追踪。
+记住，
+const FRotator Rotator=GetControlRotation();//获取旋转器，是获取摄像机的旋转器
+const FRotator YawRotator(0.f,Rotator.Yaw,0.f);
+
+所以，
+const FVector ForwardDirection=FRotationMatrix(YawRotator).GetUnitAxis(EAxis::X);//获取世界向量
+这个获取的世界向量其实是摄像机的方向向量！！
+
+还有就是输入映射上下文的Y轴控制WS键和世界向量的Y轴控制左右移动的功能是不一样的
+
+输入映射上下文的x轴的右键值是1，左键值是-1

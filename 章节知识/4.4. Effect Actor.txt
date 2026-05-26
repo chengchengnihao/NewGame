@@ -1,0 +1,6 @@
+创建一个可以改变属性的演员，改变属性最好的方式就是通过游戏效果。
+
+若使用游戏效果，就不用担心属性集的类型。
+
+OnComponentBeginOverlap是FComponentBeginOverlapSignature类型的委托，
+FComponentBeginOverlapSignature是委托，可以转到定义查看可以绑定到它身上的回调函数的输入参数。

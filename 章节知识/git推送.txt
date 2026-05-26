@@ -1,0 +1,19 @@
+从头开始的仓库创建：
+1.cd /文件夹
+2.git init
+3.创建.gitignore文件
+4.git status
+5.git add .
+6.git commit -m" "
+7.git log
+8.git remote add origin https://github.com...
+9.git remote
+10.git remote -v
+11.git push -u orign main
+
+推送：
+git status
+git add .
+git commit -m" "
+git log
+git push origin main

@@ -1,0 +1,3 @@
+创建AbilitySystemComponent和AttributeSet组件：
+在PlayCharacterBase和PlayState里头设置
+因为要在敌人和角色要用，角色的AbilitySystemComponent和AttributeSet组件在playState里头
