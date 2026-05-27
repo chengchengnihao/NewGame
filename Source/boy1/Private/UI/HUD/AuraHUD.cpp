@@ -19,8 +19,8 @@ UOverlayWidgetController* AAuraHUD::GetOverlayWidgetController(const FAuraWidget
 void AAuraHUD::InitOverlay(AAuraPlayerController* PC, AAuraPlayerState* PS, UAbilitySystemComponent* ASC,
 	UAttributeSet* AS)
 {
-	checkf(OverlayWidgetClass,TEXT("OverlayWidgetClass is uninitialed,please fill out in BP_AuraHUD"));
-	checkf(OverlayWidgetControllerClass,TEXT("OverlayWidgetControllerClass is uninitialed,please fill out in BP_AuraHUD"));
+	checkf(OverlayWidgetClass,TEXT("OverlayWidgetClass uninitialized,please fill out BP_AuraHUD"));
+	checkf(OverlayWidgetControllerClass,TEXT("OverlayWidgetControllerClass uninitialized,please fill out BP_AuraHUD"));
 	UUserWidget*Widget=CreateWidget(GetWorld(),OverlayWidgetClass);
 	OverlayWidget=Cast<UAuraUserWidget>(Widget);
 	
@@ -30,6 +30,8 @@ void AAuraHUD::InitOverlay(AAuraPlayerController* PC, AAuraPlayerState* PS, UAbi
 	//记住啊，哼哼，难受死了，要记得创建一个传入部件控制器啊，这样才能传入控制器啊啊
 	
 	OverlayWidget->SetWidgetController(WidgetController);
+	WidgetController->BroadcastInitialValues();
+	//记得一定要调用这个广播初始值函数啊，要不动态多播事件怎么执行呢？？
 	Widget->AddToViewport();
 	
 }

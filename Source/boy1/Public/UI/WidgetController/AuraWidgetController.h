@@ -43,6 +43,8 @@ class BOY1_API UAuraWidgetController : public UObject
 public:
    UFUNCTION(BlueprintCallable)
 	void SetAuraWidgetControllerParams(const FAuraWidgetControllerParams &WCParams);
+	
+	virtual void BroadcastInitialValues();
 protected:
 	UPROPERTY(BlueprintReadOnly,Category="WidgetController")
 	TObjectPtr<APlayerState>PlayerState;  //为什么这个类型不需要前向声明呢？？因为头文件#include "CoreMinimal.h"包含了
