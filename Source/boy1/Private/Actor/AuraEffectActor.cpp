@@ -29,6 +29,7 @@ void AAuraEffectActor::OnOverlay(UPrimitiveComponent* OverlappedComponent, AActo
 		//获取属性会返回一个指向那个属性集的只读指针，可以通过强制转换来绕过这种只读属性
 		UAuraAttributeSet*MutableAuraAttributeSet=const_cast<UAuraAttributeSet*>(AuraAttributeSet);  //解除const属性,打破封装
 		MutableAuraAttributeSet->SetHealth(AuraAttributeSet->GetHealth()+25.f);
+		MutableAuraAttributeSet->SetMana(AuraAttributeSet->GetMana()-25.f);
 		Destroy();
 }
 }
