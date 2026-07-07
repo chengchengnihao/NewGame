@@ -15,6 +15,32 @@
 /**
  * 
  */
+USTRUCT()
+struct FEffectProperties
+{
+	GENERATED_BODY()
+	FEffectProperties(){}
+	FGameplayEffectContextHandle EffectContextHandle;
+	
+	UPROPERTY()
+	UAbilitySystemComponent*SourceASC=nullptr;
+	UPROPERTY()
+	AActor*SourceAvatarActor=nullptr;
+	UPROPERTY()
+	AController*SourceController=nullptr;
+	UPROPERTY()
+	ACharacter*SourceCharacter=nullptr;
+	
+	UPROPERTY()
+	UAbilitySystemComponent*TargetASC=nullptr;
+	UPROPERTY()
+	AActor*TargetAvatarActor=nullptr;
+	UPROPERTY()
+	AController*TargetController=nullptr;
+	UPROPERTY()
+	ACharacter*TargetCharacter=nullptr;
+};
+
 UCLASS()
 class BOY1_API UAuraAttributeSet : public UAttributeSet
 {
@@ -25,6 +51,11 @@ public:
 	//不需要写UFUNCTION()宏，因为它不需要在蓝图里调用，实现，也不需要引擎反射系统识别
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>&OutLifetimeProps)const override;
 	
+	
+	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override;
+	
+
+	virtual void PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data)override;
 	UPROPERTY(BlueprintReadOnly,ReplicatedUsing=OnRep_Health,Category="Vital Attributes")  
 	//当服务器把 Health 同步到客户端时，自动调用客户端的 OnRep_Health() 函数。
 	//大多数属性都需要这样做
@@ -51,6 +82,8 @@ public:
 	void OnRep_Mana(const FGameplayAttributeData& OldMana)const;
 	UFUNCTION()
 	void OnRep_MaxMana(const FGameplayAttributeData& OldMaxMana)const;
+private:
 	
+	void setEffetProperties(const FGameplayEffectModCallbackData& Data,FEffectProperties& Props);
 	
 };
