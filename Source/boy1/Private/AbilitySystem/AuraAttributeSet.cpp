@@ -72,7 +72,7 @@ void UAuraAttributeSet::setEffetProperties(const FGameplayEffectModCallbackData&
 	{
 		Props.TargetAvatarActor=Data.Target.AbilityActorInfo->AvatarActor.Get(); //获取AvatarActor角色
 		Props.TargetController=Data.Target.AbilityActorInfo->PlayerController.Get();  //获取控制器
-		Props.TargetCharacter=Cast<ACharacter>(Props.TargetAvatarActor);              //获取character角色
+		Props.TargetCharacter=Cast<ACharacter>(Props.TargetAvatarActor);              //获取character角色，因为TargetCharacter是不用通过控制器来获得的，所以不用判断控制器是否为空
 		Props.TargetASC=UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(Props.TargetAvatarActor); //获取能力系统组件
 		
 	}
