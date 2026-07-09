@@ -42,5 +42,11 @@ void AAuraEnemy::UnHighlightActor()
 void AAuraEnemy::BeginPlay()
 {
 	Super::BeginPlay();
+	
+}
+
+void AAuraEnemy::InitAbilityActorInfo()
+{
 	AbilitySystemComponent->InitAbilityActorInfo(this,this); //定义能力演员信息
+	Cast<UAuraAbilitySystemComponent>(AbilitySystemComponent)->AbilityActorInfoSet();
 }

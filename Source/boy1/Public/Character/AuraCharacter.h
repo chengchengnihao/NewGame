@@ -18,5 +18,5 @@ public:
 	virtual void PossessedBy(AController* NewController) override; //在声明里头它们是在public里头的
 	virtual void OnRep_PlayerState() override;
 private:
-	void InitAbilityActorInfo();
+	virtual void InitAbilityActorInfo()override;
 };
