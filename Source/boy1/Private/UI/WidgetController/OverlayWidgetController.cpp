@@ -29,12 +29,20 @@ void UOverlayWidgetController::BindCallbacksToDependencies()
 	AddUObject(this,& UOverlayWidgetController::MaxManaChanged);
 	
 	Cast<UAuraAbilitySystemComponent>(AbilitySystemComponent)->EffectAssetTags.AddLambda(
-	[](const FGameplayTagContainer&AssetTages)
+	[this](const FGameplayTagContainer&AssetTages)//this用来捕捉此类中的所有信息，是的匿名函数内部可以使用这些信息
 	{
 		for (const auto &Tag:AssetTages)
 		{
-			const FString Msg=FString::Printf(TEXT("GE Tag:%s"),*Tag.ToString());
-			GEngine->AddOnScreenDebugMessage(-1,8.f,FColor::Green,Msg);
+			//const FString Msg=FString::Printf(TEXT("GE Tag:%s"),*Tag.ToString());//打印的时候使用过的
+			//GEngine->AddOnScreenDebugMessage(-1,8.f,FColor::Green,Msg);
+			FGameplayTag MessageTag=FGameplayTag::RequestGameplayTag(FName("Message"));
+			if (Tag.MatchesTag(MessageTag))
+			{
+				const FUIWidgetRow*Row=GetDataTableRowByTag<FUIWidgetRow>(MessageWidgetDataTable,Tag);//因为使用的是模板函数，所以调用的时候必须传入类型
+				MessageWidgetRowDelegate.Broadcast(*Row);
+			}
+			GetDataTableRowByTag<FUIWidgetRow>(MessageWidgetDataTable,Tag);//因为使用的是模板函数，所以调用的时候必须传入类型
+			
 		}
 	}	
 	);
